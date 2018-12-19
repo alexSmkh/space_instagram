@@ -26,8 +26,7 @@ def upload_photo_to_insta(image_folder_path, login, password):
         for valid_file in valid_files_for_instagram
     ]
     for image_path_and_name in list_image_path_and_name:
-        image_path = image_path_and_name[0]
-        image_name = image_path_and_name[1]
+        image_path, image_name = image_path_and_name
         bot.upload_photo(image_path, caption=image_name)
 
 
