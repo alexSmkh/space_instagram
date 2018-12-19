@@ -24,7 +24,7 @@ def fetch_photo_from_hubble(list_image_id, path_folder):
         list_image_urls = [image_info['file_url'] for image_info in files_info]
         high_quality_image_url = list_image_urls[-1]
         file_name = '{name}{format}'.format(
-            name=str(image_id),
+            name=image_id,
             format=splitext(high_quality_image_url)
         )
 
