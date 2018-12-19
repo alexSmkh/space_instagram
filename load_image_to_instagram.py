@@ -4,8 +4,6 @@ from os import getenv
 from os.path import join as joinpath
 from dotenv import load_dotenv
 
-load_dotenv()
-
 
 def upload_photo_to_insta(image_folder_path, login, password):
     bot = instabot.Bot()
@@ -34,6 +32,7 @@ def upload_photo_to_insta(image_folder_path, login, password):
 
 
 if __name__ == '__main__':
+    load_dotenv()
     image_folder_path = getenv('PATH_FOLDER')
     login = getenv('LOGIN')
     password = getenv('PASSWORD')

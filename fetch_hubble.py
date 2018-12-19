@@ -6,9 +6,6 @@ from os.path import join as joinpath
 from dotenv import load_dotenv
 
 
-load_dotenv()
-
-
 def fetch_photo_from_hubble(list_image_id, path_folder):
     url_for_hubble = 'http://hubblesite.org/api/v3/image/'
     list_urls_and_id_for_request = [
@@ -51,6 +48,7 @@ def get_format_image(url):
 
 
 if __name__ == '__main__':
+    load_dotenv()
     path_folder_for_image = getenv('PATH_FOLDER')
     params = {
         'collection_name': 'spacecraft'
