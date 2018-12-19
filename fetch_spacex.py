@@ -9,8 +9,8 @@ def fetch_spasex_last_launch(path_folder, url):
     if exists(path_folder) is False:
         makedirs(path_folder)
 
-    r = requests.get(url).json()
-    image_urls = r['links']['flickr_images']
+    response = requests.get(url).json()
+    image_urls = response['links']['flickr_images']
     for image_number, image_url in enumerate(image_urls):
         path_file = '{path_folder}{image_number}image.jpeg'.format(
             path_folder=path_folder,
