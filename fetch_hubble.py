@@ -1,7 +1,7 @@
-import errno
 import requests
 from os import makedirs
 from os import getenv
+from os.path import exists
 from os.path import splitext
 from os.path import join as joinpath
 from dotenv import load_dotenv
@@ -13,11 +13,8 @@ def fetch_photo_from_hubble(list_image_id, path_folder):
         [joinpath(url_for_hubble, str(image_id)), image_id]
         for image_id in list_image_id
     ]
-    try:
+    if exists(path_folder) is False:
         makedirs(path_folder)
-    except OSError as exception:
-        if exception.errno != errno.EEXIST:
-            raise
     for image_url, image_id in list_urls_and_id_for_request:
         response = requests.get(image_url).json()
         files_info = response['image_files']
