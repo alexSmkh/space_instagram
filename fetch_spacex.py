@@ -1,16 +1,14 @@
-import errno
 import requests
 from os import makedirs
 from os import getenv
+from os.path import exists
 from dotenv import load_dotenv
 
 
 def fetch_spasex_last_launch(path_folder, url):
-    try:
+    if exists(path_folder) is False:
         makedirs(path_folder)
-    except OSError as exception:
-        if exception.errno != errno.EEXIST:
-            raise
+
     r = requests.get(url).json()
     image_urls = r['links']['flickr_images']
     for image_number, image_url in enumerate(image_urls):
