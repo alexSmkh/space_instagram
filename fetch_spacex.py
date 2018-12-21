@@ -6,8 +6,7 @@ from dotenv import load_dotenv
 
 
 def fetch_spasex_last_launch(path_folder, url):
-    if exists(path_folder) is False:
-        makedirs(path_folder)
+    makedirs(path_folder, exist_ok=True)
 
     response = requests.get(url).json()
     image_urls = response['links']['flickr_images']
